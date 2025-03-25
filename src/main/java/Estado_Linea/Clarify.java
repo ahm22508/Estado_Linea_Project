@@ -24,7 +24,7 @@ public class Clarify {
             byte [] windows  = new byte[512];
             user32.GetWindowTextA(hwnd , windows , 512);
             String windowTitle = Native.toString(windows);
-            if (windowTitle.contains("Clarify") && windowTitle.contains("Remote")){
+            if (windowTitle.contains("Clarify") && !windowTitle.contains("CRM")){
                 pointer= user32.FindWindow(null, windowTitle);
                 user32.SetForegroundWindow(pointer);
                 user32.ShowWindow(pointer, 1);
