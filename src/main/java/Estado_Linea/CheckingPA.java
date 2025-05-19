@@ -38,6 +38,7 @@ public class CheckingPA extends CommonFunctionalities {
                 }
             }
             ExecuteCheck();
+
             if (pcScreen.has("C:\\EstadoLineaApp\\img\\PopUp.png")) {
                 Lineas.createCell(1).setCellValue("No Preactivada");
                 //Clean Error.
@@ -48,6 +49,7 @@ public class CheckingPA extends CommonFunctionalities {
             if (!pcScreen.has("C:\\EstadoLineaApp\\img\\PopUp.png")) {
                 Lineas.createCell(1).setCellValue("Preactivada");
             }
+
             CleanCheck();
         }
     }

@@ -37,9 +37,11 @@ public class CheckingAC extends CommonFunctionalities {
                 }
             }
             ExecuteCheck();
-            if (pcScreen.has("C:\\EstadoLineaApp\\img\\ActivationImage.png") && !pcScreen.has("C:\\EstadoLineaApp\\img\\PopUp.png")) {
+
+            if (pcScreen.has("C:\\EstadoLineaApp\\img\\ActivationImage.png")) {
                 Lineas.createCell(1).setCellValue("Activa");
             }
+
             if (pcScreen.has("C:\\EstadoLineaApp\\img\\PopUp.png")) {
                 Lineas.createCell(1).setCellValue("No Activa");
                 //Clean Error.
@@ -47,6 +49,11 @@ public class CheckingAC extends CommonFunctionalities {
                 Bot.getRobot().mousePress(KeyEvent.BUTTON1_DOWN_MASK);
                 Bot.getRobot().mouseRelease(KeyEvent.BUTTON1_DOWN_MASK);
             }
+
+            if (!pcScreen.has("C:\\EstadoLineaApp\\img\\ActivationImage.png")) {
+                Lineas.createCell(1).setCellValue("No Activa");
+            }
+
             CleanCheck();
         }
     }
