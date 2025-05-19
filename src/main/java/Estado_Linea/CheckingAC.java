@@ -50,31 +50,4 @@ public class CheckingAC extends CommonFunctionalities {
             CleanCheck();
         }
     }
-
-    public void CheckIfIsNotPA() throws Exception{
-        Cell LineaCell;
-        String Linea;
-        Sheet resultSheet = FileAccess.getResultSheet();
-        for (Row Lineas : resultSheet) {
-            LineaCell = Lineas.getCell(0);
-            if (LineaCell != null) {
-                Linea = LineaCell.getStringCellValue();
-                for (char digit : Linea.toCharArray()) {
-                    Bot.getRobot().keyPress(KeyEvent.getExtendedKeyCodeForChar(digit));
-                }
-            }
-            ExecuteCheck();
-            if (pcScreen.has("C:\\EstadoLineaApp\\img\\PopUp.png")) {
-                Lineas.createCell(1).setCellValue("No Preactivada(Not Error)");
-                //Clean Error.
-                Bot.getRobot().mouseMove(764, 475);
-                Bot.getRobot().mousePress(KeyEvent.BUTTON1_DOWN_MASK);
-                Bot.getRobot().mouseRelease(KeyEvent.BUTTON1_DOWN_MASK);
-            }
-            if (!pcScreen.has("C:\\EstadoLineaApp\\img\\PopUp.png")) {
-                Lineas.createCell(1).setCellValue("Preactivada(Error)");
-            }
-            CleanCheck();
-        }
-    }
 }
