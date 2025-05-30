@@ -38,20 +38,22 @@ public class CheckingAC extends CommonFunctionalities {
             }
             ExecuteCheck();
 
-            if (pcScreen.has("C:\\EstadoLineaApp\\img\\ActivationImage.png")) {
+            if (pcScreen.has("C:\\EstadoLineaApp\\img\\GSM.png") && pcScreen.has("C:\\EstadoLineaApp\\img\\GPRS.png")) {
                 Lineas.createCell(1).setCellValue("Activa");
             }
-
+            else if (pcScreen.has("C:\\EstadoLineaApp\\img\\GSM.png")) {
+                Lineas.createCell(1).setCellValue("Activa solo GSM");
+            }
+            else if (pcScreen.has("C:\\EstadoLineaApp\\img\\GPRS.png"))
+            {
+                Lineas.createCell(1).setCellValue("Activa solo GPRS");
+            }
             if (pcScreen.has("C:\\EstadoLineaApp\\img\\PopUp.png")) {
                 Lineas.createCell(1).setCellValue("No Activa");
                 //Clean Error.
                 Bot.getRobot().mouseMove(764, 475);
                 Bot.getRobot().mousePress(KeyEvent.BUTTON1_DOWN_MASK);
                 Bot.getRobot().mouseRelease(KeyEvent.BUTTON1_DOWN_MASK);
-            }
-
-            if (!pcScreen.has("C:\\EstadoLineaApp\\img\\ActivationImage.png")) {
-                Lineas.createCell(1).setCellValue("No Activa");
             }
 
             CleanCheck();
